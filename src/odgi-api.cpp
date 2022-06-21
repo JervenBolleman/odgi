@@ -23,7 +23,7 @@
 using namespace odgi;
 
 const std::string odgi_version() {
-  return Version::get_version();
+  return Version::VERSION;
 }
 
 size_t odgi_long_long_size() {
@@ -314,9 +314,5 @@ const std::string odgi_get_path_name(const ograph_t graph, const path_handle_i i
 }
 
 const char* odgi_c_version(){
-    std::string str = odgi_version();
-    char* ca = new char[str.size()+1];
-    std::copy(str.begin(), str.end(), ca);
-    ca[str.size()] = '\0';
-    return ca;
+    return Version::VERSION.c_str();
 }
