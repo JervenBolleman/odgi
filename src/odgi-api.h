@@ -115,4 +115,5 @@ const std::string odgi_get_path_name(const ograph_t graph, const path_handle_i i
 
 extern "C" {
   // const char *odgi_c_get_path_name(const ograph_t graph, const path_handle_i path);
+  const char* odgi_c_version();
 }
