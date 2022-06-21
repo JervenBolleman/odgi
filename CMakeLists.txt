@@ -509,6 +509,7 @@ add_library(odgi_objs OBJECT
   ${CMAKE_SOURCE_DIR}/src/unittest/sort.cpp
   ${CMAKE_SOURCE_DIR}/src/unittest/pathindex.cpp
   ${CMAKE_SOURCE_DIR}/src/unittest/edge.cpp
+  ${CMAKE_SOURCE_DIR}/src/unittest/odgiapitest.cpp
   ${CMAKE_SOURCE_DIR}/src/unittest/extract.cpp
   ${CMAKE_SOURCE_DIR}/src/unittest/stepindex.cpp
   ${CMAKE_SOURCE_DIR}/src/subcommand/subcommand.cpp

@@ -312,3 +312,11 @@ const bool odgi_for_each_step_on_handle(const ograph_t graph,
 const std::string odgi_get_path_name(const ograph_t graph, const path_handle_i ipath) {
   return (as_graph_t(graph))->get_path_name(as_path_handle(ipath));
 }
+
+const char* odgi_c_version(){
+    std::string str = odgi_version();
+    char* ca = new char[str.size()+1];
+    std::copy(str.begin(), str.end(), ca);
+    ca[str.size()] = '\0';
+    return ca;
+}
