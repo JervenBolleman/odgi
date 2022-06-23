@@ -46,8 +46,10 @@ size_t odgi_long_long_size();
 size_t odgi_handle_i_size();
 size_t odgi_step_handle_i_size();
 unsigned __int128 odgi_test_uint128();
-const ograph_t odgi_load_graph(const char *filen);
-void odgi_free_graph(const ograph_t graph);
+extern "C" {
+    const ograph_t odgi_load_graph(const char *filen);
+    void odgi_free_graph(const ograph_t graph);
+}
 const size_t odgi_get_node_count(ograph_t graph);
 const size_t odgi_max_node_id(const ograph_t graph);
 const size_t odgi_min_node_id(const ograph_t graph);
@@ -91,14 +93,14 @@ const bool odgi_step_eq(const ograph_t graph,
                         step_handle_i step_handle2);
 const step_handle_i odgi_path_front_end(const ograph_t graph,
                                    const path_handle_i path);
-const step_handle_i odgi_get_next_step(const ograph_t graph,
+extern "C" const step_handle_i odgi_get_next_step(const ograph_t graph,
                                        const step_handle_i step);
 const step_handle_i odgi_get_previous_step(const ograph_t graph,
                                        const step_handle_i step);
 const bool odgi_has_edge(const ograph_t graph, const handle_i left, const handle_i right);
 const bool odgi_is_path_front_end(const ograph_t graph, const step_handle_i step);
 const bool odgi_is_path_end(const ograph_t graph, const step_handle_i step);
-const bool odgi_has_next_step(const ograph_t graph, const step_handle_i step);
+extern "C" const bool odgi_has_next_step(const ograph_t graph, const step_handle_i step);
 const bool odgi_has_previous_step(const ograph_t graph, const step_handle_i step);
 const path_handle_i odgi_get_path_handle_of_step(const ograph_t graph,
                                                  const step_handle_i step);
