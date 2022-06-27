@@ -16,10 +16,12 @@ using namespace odgi;
 // type checking in the FFI. For basic types see
 //   deps/libhandlegraph/src/include/handlegraph/util.hpp
 
-typedef std::shared_ptr<graph_t> ograph_t;
+extern "C" { 
+  typedef  std::shared_ptr<graph_t> ograph_t;
 
-inline graph_t* as_graph_t(ograph_t graph) {
-  return graph.get();
+  inline graph_t* as_graph_t(ograph_t graph) {
+    return graph.get();
+  }
 }
 
 // Use integers for the FFI
@@ -47,8 +49,8 @@ size_t odgi_handle_i_size();
 size_t odgi_step_handle_i_size();
 unsigned __int128 odgi_test_uint128();
 extern "C" {
-    const ograph_t odgi_load_graph(const char *filen);
-    void odgi_free_graph(const ograph_t graph);
+  const ograph_t odgi_load_graph(const char *filen);
+  void odgi_free_graph(const ograph_t graph);
 }
 const size_t odgi_get_node_count(ograph_t graph);
 const size_t odgi_max_node_id(const ograph_t graph);
@@ -118,4 +120,8 @@ const std::string odgi_get_path_name(const ograph_t graph, const path_handle_i i
 extern "C" {
   // const char *odgi_c_get_path_name(const ograph_t graph, const path_handle_i path);
   const char* odgi_c_version();
+
+  const void* odgi_c_load_graph(const char* filen);
+
+  const uint64_t odgi_c_max_node_id(const void* ograph);
 }

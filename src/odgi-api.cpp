@@ -57,7 +57,6 @@ const ograph_t odgi_load_graph(const char *filen) {
 void odgi_free_graph(ograph_t graph) {
   // no need to delete a shared ptr!
 }
-
 // has python doctest
 const size_t odgi_get_node_count(ograph_t graph) {
   return ((as_graph_t(graph)))->get_node_count();
@@ -313,6 +312,19 @@ const std::string odgi_get_path_name(const ograph_t graph, const path_handle_i i
   return (as_graph_t(graph))->get_path_name(as_path_handle(ipath));
 }
 
-const char* odgi_c_version(){
+extern "C" {
+  const char* odgi_c_version(){
     return Version::VERSION.c_str();
+  }
+
+  //Carefull we extract a raw pointer out of the 
+  // smart one
+  const void* odgi_c_load_graph(const char* filen){
+    return odgi_load_graph(filen).get();
+  }
+
+  const uint64_t odgi_c_max_node_id(const void* ograph){
+
+    return ((graph_t*) ograph)->get_node_count();
+  }
 }
